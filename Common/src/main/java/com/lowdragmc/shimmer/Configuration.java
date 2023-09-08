@@ -104,7 +104,7 @@ public class Configuration {
 			if (!shimmerConfigDir.exists() || !shimmerConfigDir.isDirectory()) shimmerConfigDir.mkdir();
 			var configFiles = Objects.requireNonNullElse(shimmerConfigDir.listFiles(),new File[0]);
 			for (var configFile : configFiles) {
-				if (!configFile.getName().endsWith(".json")) return;
+				if (!configFile.getName().endsWith(".json")) continue;
 				causedSource = " file in config folder:" + configFile.getAbsolutePath();
 				if (configFile.isDirectory()) continue;
 				try (var stream = new FileReader(configFile)) {
